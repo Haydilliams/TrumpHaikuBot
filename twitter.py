@@ -2,6 +2,7 @@ import tweepy as tp
 import time
 import os
 import re
+from haiku import haiku_finder
 
 # credentials to login to twitter api
 consumer_key = 'Jes3l4Bg6AunsjMNDuucv8vTv'
@@ -19,7 +20,7 @@ api = tp.API(auth)
 trump_id = 'realDonaldTrump'
 
 # raw tweets
-trumps_tweets_raw = api.user_timeline(screen_name = trump_id, count = 10, 
+trumps_tweets_raw = api.user_timeline(screen_name = trump_id, count = 25, 
 		include_rts = False, tweet_mode="extended")
 
 # list of tweets in their full length
@@ -32,6 +33,9 @@ trumps_tweets = []
 for tweet in trumps_tweets_long:
 	trumps_tweets.append(re.sub('\s\W\S+|\s\d\S+|\shttps\S+', '', tweet))
 	
+haikus = []
+
 for tweet in trumps_tweets:
-	print (tweet)
+	#haiku_finder(tweet,haikus)
+	print(tweet)
 	print ("----------------------------------------------------------")
